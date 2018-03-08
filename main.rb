@@ -1,7 +1,7 @@
 require 'pg'
 require 'rack'
 require 'rack/lobster'
-require 'db_commands.rb'
+require './db_commands'
 
 postgres = PG.connect(dbname: 'postgres')
 begin
@@ -11,7 +11,6 @@ rescue PG::Error => e
 end
 
 con = PG.connect(dbname: "shopapi")
-
 
 p con.server_version
 
