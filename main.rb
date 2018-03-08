@@ -4,14 +4,15 @@ require 'rack/lobster'
 
 postgres = PG.connect(dbname: 'postgres')
 begin
-  postgres.exec("CREATE DATABASE shopAPI;")
+  postgres.exec("CREATE DATABASE shopapi")
 rescue PG::Error => e
-
+  p "DB already initialized"
 end
 
-conn = PG.connect(dbname: "shopapi")
+con = PG.connect(dbname: "shopapi")
 
-p conn
+
+p con.server_version
 
 
 
