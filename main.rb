@@ -1,6 +1,7 @@
 require 'pg'
 require 'rack'
 require 'rack/lobster'
+require 'db_commands.rb'
 
 postgres = PG.connect(dbname: 'postgres')
 begin
