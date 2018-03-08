@@ -12,6 +12,8 @@ end
 
 con = PG.connect(dbname: "shopapi")
 
+increment_user_num_license_keys_sent(con, 6)
+
 p con.server_version
 
 
