@@ -1,8 +1,17 @@
 require 'pg'
 require 'rack'
 
+
 postgres = PG.connect(dbname: 'postgres')
-postgres.exec("CREATE DATABASE shopAPI")
+begin
+  postgres.exec("CREATE DATABASE shopAPI")
+rescue PG::Error => e
+
+end
+
+conn = PG.connect(dbname: "shopAPI")
+
+p conn
 
 
 
@@ -16,5 +25,5 @@ end
 
 Rack::Server.start(
   app: app,
-  Port: 3000
+  Port: 4000
 )
