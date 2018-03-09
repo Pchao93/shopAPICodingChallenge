@@ -1,18 +1,21 @@
 require 'pg'
 require 'rack'
+require 'rack/lobster'
+require './db_commands'
 require 'json'
-# require 'rack/lobster'
 
 postgres = PG.connect(dbname: 'postgres')
 begin
-  postgres.exec("CREATE DATABASE shopAPI;")
+  postgres.exec("CREATE DATABASE shopapi")
 rescue PG::Error => e
-
+  p "DB already initialized"
 end
 
-conn = PG.connect(dbname: "shopapi")
+con = PG.connect(dbname: "shopapi")
 
-p conn
+increment_user_num_license_keys_sent(con, 6)
+
+p con.server_version
 
 app = Proc.new do |env|
   req = Rack::Request.new(env)
